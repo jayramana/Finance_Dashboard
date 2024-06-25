@@ -16,12 +16,12 @@ const monthlySchema = new financeSchema(
       currency: "INR",
       get: (val) => val / 100,
     },
-    Operationalexpenses: {
+    operationalExpenses: {
       type: mongoose.Types.Currency,
       currency: "INR",
       get: (val) => val / 100,
     },
-    nonOperationalexpenses: {
+    nonOperationalExpenses: {
       type: mongoose.Types.Currency,
       currency: "INR",
       get: (val) => val / 100,
@@ -43,16 +43,6 @@ const dailySchema = new financeSchema(
       currency: "INR",
       get: (val) => val / 100,
     },
-    Operationalexpenses: {
-      type: mongoose.Types.Currency,
-      currency: "INR",
-      get: (val) => val / 100,
-    },
-    nonOperationalexpenses: {
-      type: mongoose.Types.Currency,
-      currency: "INR",
-      get: (val) => val / 100,
-    },
   },
   { toJSON: { getters: true } }
 );
@@ -68,12 +58,12 @@ const appSchema = new financeSchema(
       currency: "INR",
       get: (val) => val / 100,
     },
-    totalExpense: {
+    totalExpenses: {
       type: mongoose.Types.Currency,
       currency: "INR",
       get: (val) => val / 100,
     },
-    expenseByCategory: {
+    expensesByCategory: {
       type: Map,
       of: {
         type: mongoose.Types.Currency,

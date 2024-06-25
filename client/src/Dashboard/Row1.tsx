@@ -1,8 +1,19 @@
 import { Box } from "@mui/material";
-import { useGetKpisQuery } from "../state/api";
+import fetch from "../state/api";
+import { useState, useEffect, useMemo } from "react";
+import { APIResponse } from "../state/types";
 
 const Row1 = () => {
-  // const data = useGetKpisQuery()
+  const [apidata, setApidata] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch();
+      setApidata(data);
+    };
+    fetchData();
+  }, []);
+  console.log(apidata);
+
   return (
     <>
       <Box

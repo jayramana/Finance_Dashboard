@@ -1,18 +1,19 @@
-import {
-  createApi,
-  fetchBaseQuery,
-} from "@reduxjs/toolkit/query";
+import axios from "axios";
 
-export const Api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BACKEND_BASE_URL }),
-  reducerPath: "main",
-  tagTypes: ["Kpis"],
-  endpoints: (build) => ({
-    getKpis: build.query<void, void>({
-      query: () => "/kpi/kpis/",
-      providesTags: ["Kpis"],
-    }),
-  }),
-});
+export function api() {
+  const fetch = async () => {
+    try {
+      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/finance`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  };
 
-export const { useGetKpisQuery } = Api;
+  return { fetch };
+}
+
+const { fetch } = api();
+export default fetch;
